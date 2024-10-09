@@ -12,6 +12,13 @@ body {
   }
 }
 
+.dock-sticky {
+  position: -webkit-sticky; /* Para soporte en Safari */
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Asegura que el Dock esté siempre por encima de otros elementos si es necesario */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

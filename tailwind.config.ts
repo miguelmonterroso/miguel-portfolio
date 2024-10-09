@@ -9,37 +9,37 @@ const config: Config = {
   ],
   theme: {
   	extend: {
-		backgroundImage: {
-			'title-gradient': 'linear-gradient(90deg, #7C4DFF, #B388EB)',
-		  },
-		  backgroundClip: {
-			'text': 'text',
-		  },
-		  textColor: {
-			'transparent': 'transparent',
-		  },
+  		backgroundImage: {
+  			'title-gradient': 'linear-gradient(90deg, #7C4DFF, #B388EB)'
+  		},
+  		backgroundClip: {
+  			text: 'text'
+  		},
+  		textColor: {
+  			transparent: 'transparent'
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
-			title:"#B388EB",
-			subtitle:"#8F7AEA",
-			principal:"#E0E0E0",
-			customBg: {
-				dark: "#1D1B31",
-				light: "#FFFFFF",
-			  },
-			  textPrimary: {
-				dark: "#E0E0E0",
-				light: "#000000",
-			  },
-			  button: {
-				dark: "#7C4DFF",
-				light: "#4A4A4A",
-			  },
-			  hover: {
-				dark: "#A45EEA",
-				light: "#333333",
-			  },
+  			title: '#B388EB',
+  			subtitle: '#8F7AEA',
+  			principal: '#E0E0E0',
+  			customBg: {
+  				dark: '#1D1B31',
+  				light: '#FFFFFF'
+  			},
+  			textPrimary: {
+  				dark: '#E0E0E0',
+  				light: '#000000'
+  			},
+  			button: {
+  				dark: '#7C4DFF',
+  				light: '#4A4A4A'
+  			},
+  			hover: {
+  				dark: '#A45EEA',
+  				light: '#333333'
+  			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -86,7 +86,8 @@ const config: Config = {
   		},
   		animation: {
   			grid: 'grid 15s linear infinite',
-  			pulse: 'pulse var(--duration) ease-out infinite'
+  			pulse: 'pulse var(--duration) ease-out infinite',
+  			gradient: 'gradient 8s linear infinite'
   		},
   		keyframes: {
   			grid: {
@@ -104,10 +105,14 @@ const config: Config = {
   				'50%': {
   					boxShadow: '0 0 0 8px var(--pulse-color)'
   				}
+  			},
+  			gradient: {
+  				to: {
+  					backgroundPosition: 'var(--bg-size) 0'
+  				}
   			}
   		}
   	}
-	
   },
   plugins: [require("tailwindcss-animate")],
 };
