@@ -1,101 +1,117 @@
-import Image from "next/image";
+"use client";
 
+import { useEffect, useState } from "react";
+import BoxReveal from "@/components/ui/box-reveal";
+import { Button } from "@/components/ui/button";
+import Particles from "@/components/ui/particles";
+import { ChevronRight, Sun, SunMoon, Languages } from "lucide-react";
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [language, setLanguage] = useState("en");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const rootElement = document.documentElement;
+    if (isDarkMode) {
+      rootElement.classList.add("dark");
+    } else {
+      rootElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const toggleLanguage = () => {
+    setLanguage((prevLanguage) => (prevLanguage === "es" ? "en" : "es"));
+  };
+
+  return (
+    
+    <div className={`flex justify-center flex-col h-screen ${isDarkMode ? 'bg-[#1D1B31]' : 'bg-white'}`}>
+      <div className="w-full md:w-1/2 p-12 text-left">
+        <div className="flex gap-4 mb-4">
+          <Button onClick={toggleTheme}>
+            {isDarkMode ? (language === "es" ? <Sun/> : <Sun/>) : (language === "es" ? <SunMoon/> : <SunMoon/>)}
+          </Button>
+          <Button onClick={toggleLanguage}>
+            {language === "es" ? <Languages />
+ : <Languages />
+}
+          </Button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+          <div>
+            <h1 className="bg-title-gradient bg-clip-text text-transparent font-bold text-5xl md:text-[4rem]">
+              Miguel Monterroso
+            </h1>
+          </div>
+        </BoxReveal>
+
+        <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+          <div>
+            <p className={`${isDarkMode ? 'text-subtitle' : 'text-black'} text-2xl mt-4`}>
+              {language === "es" ? "Desarrollador Web" : "Web Developer"}
+            </p>
+          </div>
+        </BoxReveal>
+
+        <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+          <div className="mb-5">
+            <h2 className={`${isDarkMode ? 'text-gray-300' : 'text-gray-800'} text-lg font-light mt-6`}>
+              {language === "es" ? (
+                <>
+                  Desarrollador web con más de 5 años de experiencia en{" "}
+                  <span className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} font-semibold`}>
+                    React
+                  </span>
+                  ,{" "}
+                  <span className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} font-semibold`}>
+                    TypeScript
+                  </span>
+                  , y{" "}
+                  <span className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} font-semibold`}>
+                    Tailwind
+                  </span>
+                </>
+              ) : (
+                <>
+                  Web developer with over 5 years of experience in{" "}
+                  <span className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} font-semibold`}>
+                    React
+                  </span>
+                  ,{" "}
+                  <span className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} font-semibold`}>
+                    TypeScript
+                  </span>
+                  , and{" "}
+                  <span className={`${isDarkMode ? 'text-purple-400' : 'text-purple-600'} font-semibold`}>
+                    Tailwind
+                  </span>
+                </>
+              )}
+            </h2>
+          </div>
+        </BoxReveal>
+
+        <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+          <div>
+            <Button className={`${isDarkMode ? 'bg-button-dark hover:bg-hover-dark' : 'bg-gray-800 hover:bg-gray-700'}`}>
+              {language === "es" ? "Conocer más" : "Learn More"}
+              <ChevronRight />
+            </Button>
+          </div>
+        </BoxReveal>
+
+        <Particles
+          className="absolute inset-0"
+          quantity={100}
+          ease={80}
+          color={isDarkMode ? '#ffffff' : '#000000'}
+          refresh
+        />
+      </div>
     </div>
   );
 }
