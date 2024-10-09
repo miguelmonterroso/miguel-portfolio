@@ -104,7 +104,7 @@ export default function Home() {
             </Link>
           </DockIcon>
           <DockIcon>
-            <a href="mailto:lokismind@gmail.com">
+            <a href="mailto:miguelmonterroso39@gmail.com">
               {" "}
               <Mail />
             </a>
