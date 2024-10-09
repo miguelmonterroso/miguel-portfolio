@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     
-    <div className={`flex justify-center flex-col h-screen ${isDarkMode ? 'bg-[#1D1B31]' : 'bg-white'}`}>
+    <div className={`flex justify-center flex-col h-screen ${isDarkMode ? 'bg-[#1D1B31]' : 'bg-white'} max-h-screen`}>
       <div className="w-full md:w-1/2 p-12 text-left">
         <div className="flex gap-4 mb-4">
           <Button onClick={toggleTheme}>
